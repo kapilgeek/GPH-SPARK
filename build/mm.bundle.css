@@ -8151,3 +8151,31 @@ select.mma-mod_survey-select {
 .button.active, .button.activated {
   box-shadow: none;
   color: #fff; }
+
+.academic_summary table tr td:first-child {
+    text-align: left;
+}
+.academic_summary table tr td {
+    background: #fff none repeat scroll 0 0 !important;
+    border: 1px solid #ddd;
+    color: #333;
+    font-size: 14px !important;
+    padding: 15px 10px !important;
+    text-align: center;
+}
+.academic_summary{
+  overflow-x: auto;
+}
+.academic_summary table {
+    width: 100%;
+}
+.academic_summary table tr td a {
+    color: #333;
+    text-decoration: none;
+}
+.academic_summary table tr:first-child td {
+    font-weight: bold;
+}
+.item[title="Academic Summary"] {
+    display: none;
+}
