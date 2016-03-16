@@ -8176,6 +8176,3 @@ select.mma-mod_survey-select {
 .academic_summary table tr:first-child td {
     font-weight: bold;
 }
-.item[title="Academic Summary"] {
-    display: none;
-}
