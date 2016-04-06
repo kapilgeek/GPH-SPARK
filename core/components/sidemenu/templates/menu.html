@@ -28,14 +28,25 @@
         <ion-content class="has-side-menu-header">
             <nav>
                 <ul class="list dark">
+                    
+                 
+                     
+                     <!--  <li>
+                       <a title="Academic Summarys" ui-sref="site.academicsummary" class="item item-icon-left ng-binding" menu-close="" href="#/site/academicsummary">
+                            <i class="icon ion-ios-list"></i>Academic Summary
+                        </a>
+                    </li> -->
+
                     <li>
                         <a menu-close class="item item-icon-left" ui-sref="site.mm_courses" title="{{ 'mm.sidemenu.mycourses' | translate}}">
                             <i class="icon ion-ionic"></i>{{ 'mm.sidemenu.mycourses' | translate}}
                         </a>
                     </li>
+                    
                     <li class="item text-center" ng-if="(!handlers || !handlers.length) && !areNavHandlersLoaded()">
                         <ion-spinner></ion-spinner>
                     </li>
+
                     <li ng-repeat="handler in handlers | orderBy:'-priority'" ng-controller="handler.controller" >
                         <a menu-close class="item item-icon-left" ui-sref="{{state}}" title="{{title | translate}}">
                             <i class="icon {{icon}}"></i> {{title | translate}}
@@ -52,7 +63,8 @@
                             <i class="icon ion-help-buoy"></i>{{ 'mm.sidemenu.help' | translate}}
                         </a>
                         -->
-                    </li>
+                    </li>                    
+
                     <li class="item item-divider"></li>
                     <li>
                         <a menu-close class="item item-icon-left" ui-sref="site.mm_settings" title="{{ 'mm.sidemenu.appsettings' | translate}}">
