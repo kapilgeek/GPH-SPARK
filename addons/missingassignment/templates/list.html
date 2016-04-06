@@ -1,0 +1,63 @@
+<ion-view view-title="{{ 'mma.missingassignment.missingassignment' | translate }}">
+    <ion-content padding="true">
+        <ion-refresher pulling-text="{{ 'mm.core.pulltorefresh' | translate }}" ng-if="missingassignmentLoaded" on-refresh="refreshMissingassignment()">
+        </ion-refresher>
+        <mm-loading hide-until="missingassignmentLoaded">
+         <!-- <div class="">{{missingassignment.summary}}
+         </div>  -->
+        
+         <!-- {{summaryHTML}} -->
+         <article></article>
+         <div class="missing_assignment academic_summary" ng-repeat="missingassignment_detail in missingassignment track by $index">
+         
+         <table>
+            <tr ng-if="missingassignment_detail.table_row.length!=0">
+                <td>{{missingassignment_detail.table_head[0]}}</td>
+                <td>{{missingassignment_detail.table_head[1]}}</td>
+                <td>{{missingassignment_detail.table_head[2]}}</td>
+                <td>{{missingassignment_detail.table_head[3]}}</td>
+            </tr>
+             
+            <tr ng-repeat="missingassignment_row in missingassignment_detail.table_row">
+                <td align="left">{{missingassignment_row.index}}</td>
+
+                <td align="left">{{missingassignment_row.duedate}}</td>
+
+                <td align="left">{{missingassignment_row.assignment}}</td>
+
+                <td align="left"><a ng-click="action($event, missingassignment_row.courseD)" href="#">{{missingassignment_row.course}}</a></td>
+
+            </tr>
+            <tr ng-if="missingassignment_detail.table_row.length==0">
+<td align="center" colspan="4">There is no missing assignment.</td> 
+            </tr>  
+            
+         </table>
+            
+         </div>
+         </mm-loading>
+         <!-- <article class="card" ng-repeat="missingassignment_detail in missingassignment track by $index" >
+            <div class="neeraj"  ng-bind-html="missingassignment_detail.summary"></div>
+         </article> -->
+            <!-- <article class="card" ng-repeat="notification in notifications track by $index">
+                <div class="item">
+                    <h2>{{notification.userfromfullname}}</h2>
+                    <p>{{notification.timecreated | mmDateDayOrTime}}</p>
+                </div>
+                <div class="item item-body">
+                    <p><mm-format-text class="mm-content-with-float" watch="true">{{ notification.mobiletext | mmCreateLinks | mmaNotificationsFormat }}</mm-format-text></p>
+                </div>
+                <mma-notifications-actions contexturl="notification.contexturl" courseid="notification.courseid"></mma-notifications-actions>
+            </article> -->
+
+            <ion-infinite-scroll ng-if="canLoadMore"
+                    immediate-check="false"
+                    on-infinite="loadMoreMissingassignment()" >
+            </ion-infinite-scroll>
+
+            <div class="padding" ng-if="!missingassignment || missingassignment.length <= 0">
+                <p>{{ 'mma.missingassignment.therearenoasummaryyet' | translate}}</p
+            </div>
+        </mm-loading>
+    </ion-content>
+</ion-view>
