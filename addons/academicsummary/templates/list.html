@@ -11,39 +11,36 @@
          <div class="academic_summary" ng-repeat="academicsummary_detail in academicsummary track by $index">
          <table>
             <tr>
-                <td>{{academicsummary_detail.summary_head[0]}}</td>
-                <td>{{academicsummary_detail.summary_head[1]}}</td>
-                <td>{{academicsummary_detail.summary_head[2]}}</td>
-                <td>{{academicsummary_detail.summary_head[3]}}</td>
-                <td>{{academicsummary_detail.summary_head[4]}}</td>
-                <td>{{academicsummary_detail.summary_head[5]}}</td>
+                <td></td>
+                 
+                <td ng-if='academicsummary_detail.summary_head[0]'>
+                {{academicsummary_detail.summary_head[0]}}</td>
+                <td ng-if='academicsummary_detail.summary_head[1]'>{{academicsummary_detail.summary_head[1]}}</td>
+                <td ng-if='academicsummary_detail.summary_head[2]'>{{academicsummary_detail.summary_head[2]}}</td>
+                <td ng-if='academicsummary_detail.summary_head[3]'>{{academicsummary_detail.summary_head[3]}}</td>
+                <td ng-if='academicsummary_detail.summary_head[4]'>{{academicsummary_detail.summary_head[4]}}</td>
+                <td ng-if='academicsummary_detail.summary_head[5]'>{{academicsummary_detail.summary_head[5]}}
+                </td>
+
             </tr>
             <tr ng-repeat="academicsummary_course in academicsummary_detail.courseData">
                 <td><a ng-click="action($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.course}}</a></td>
-                <td><a ng-click="actionGrade($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.data[0]}}</a></td>
-                <td><a ng-click="actionGrade($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.data[1]}}</a></td>
-                <td><a ng-click="actionGrade($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.data[2]}}</a></td>
-                <td><a ng-click="actionGrade($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.data[3]}}</a></td>
-                <td><a ng-click="actionGrade($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.data[4]}}</a></td>
+                <td ng-if="academicsummary_course.data[0]"><a ng-click="actionGrade($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.data[0]}}</a></td>
+                <td ng-if="academicsummary_course.data[1]"><a ng-click="actionGrade($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.data[1]}}</a></td>
+                <td ng-if="academicsummary_course.data[2]"><a ng-click="actionGrade($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.data[2]}}</a></td>
+                <td ng-if="academicsummary_course.data[3]"><a ng-click="actionGrade($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.data[3]}}</a></td>
+                <td ng-if="academicsummary_course.data[4]"><a ng-click="actionGrade($event, academicsummary_course.courseD)" href="#">{{academicsummary_course.data[4]}}</a></td>
+
+                 <td ng-if="academicsummary_course.data[5]"></td>
+
+                
             </tr>
             
          </table>
             
          </div>
          </mm-loading>
-         <!-- <article class="card" ng-repeat="academicsummary_detail in academicsummary track by $index" >
-            <div class="neeraj"  ng-bind-html="academicsummary_detail.summary"></div>
-         </article> -->
-            <!-- <article class="card" ng-repeat="notification in notifications track by $index">
-                <div class="item">
-                    <h2>{{notification.userfromfullname}}</h2>
-                    <p>{{notification.timecreated | mmDateDayOrTime}}</p>
-                </div>
-                <div class="item item-body">
-                    <p><mm-format-text class="mm-content-with-float" watch="true">{{ notification.mobiletext | mmCreateLinks | mmaNotificationsFormat }}</mm-format-text></p>
-                </div>
-                <mma-notifications-actions contexturl="notification.contexturl" courseid="notification.courseid"></mma-notifications-actions>
-            </article> -->
+         
 
             <ion-infinite-scroll ng-if="canLoadMore"
                     immediate-check="false"
