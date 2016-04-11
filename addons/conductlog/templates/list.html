@@ -1,0 +1,64 @@
+<!-- <ion-view view-title="{{'mma.conductlog.conductlog' | translate }}"> -->
+<ion-view view-title="Conduct Log">
+
+
+    <ion-content padding="true">
+        <ion-refresher pulling-text="{{ 'mm.core.pulltorefresh' | translate }}" ng-if="conductlogLoaded" on-refresh="refreshConductlog()">
+        </ion-refresher>
+        <mm-loading hide-until="conductlogLoaded">
+         <!-- <div class="">{{conductlog.summary}}
+         </div>  -->
+        
+         <!-- {{summaryHTML}} -->
+         <article></article>
+         <div class="conductlog_assignment academic_summary" ng-repeat="conductlog_detail in conductlog track by $index">
+         <table>
+            <tr>
+                <td>{{conductlog_detail.table_head[0]}}</td>
+                <td>{{conductlog_detail.table_head[1]}}</td>
+                <td>{{conductlog_detail.table_head[2]}}</td>
+                <td>{{conductlog_detail.table_head[3]}}</td>
+                <td>{{conductlog_detail.table_head[4]}}</td>
+                <td>{{conductlog_detail.table_head[5]}}</td>
+            </tr>
+            <tr ng-repeat="conductlog_row in conductlog_detail.table_row">
+                <td align="left">{{conductlog_row.index}}</td>
+
+                <td align="left">{{conductlog_row.date}}</td>
+
+                <td align="left">{{conductlog_row.violation_type}}</td>
+                <td align="left">{{conductlog_row.disruption_type}}</td>
+                <td align="left">{{conductlog_row.comment}}</td>
+                <td align="left">{{conductlog_row.teachername}}</td>
+
+            </tr>
+            
+         </table>
+            
+         </div>
+         </mm-loading>
+         <!-- <article class="card" ng-repeat="conductlog_detail in conductlog track by $index" >
+            <div class="neeraj"  ng-bind-html="conductlog_detail.summary"></div>
+         </article> -->
+            <!-- <article class="card" ng-repeat="notification in notifications track by $index">
+                <div class="item">
+                    <h2>{{notification.userfromfullname}}</h2>
+                    <p>{{notification.timecreated | mmDateDayOrTime}}</p>
+                </div>
+                <div class="item item-body">
+                    <p><mm-format-text class="mm-content-with-float" watch="true">{{ notification.mobiletext | mmCreateLinks | mmaNotificationsFormat }}</mm-format-text></p>
+                </div>
+                <mma-notifications-actions contexturl="notification.contexturl" courseid="notification.courseid"></mma-notifications-actions>
+            </article> -->
+
+            <ion-infinite-scroll ng-if="canLoadMore"
+                    immediate-check="false"
+                    on-infinite="loadMoreconductlog()" >
+            </ion-infinite-scroll>
+
+            <div class="padding" ng-if="!conductlog || conductlog.length <= 0">
+                <p>{{ 'mma.conductlog.therearenoasummaryyet' | translate}}</p
+            </div>
+        </mm-loading>
+    </ion-content>
+</ion-view>
